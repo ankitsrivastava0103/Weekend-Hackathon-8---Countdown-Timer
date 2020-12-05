@@ -3,7 +3,7 @@ import "../styles/App.css";
 
 const App = () => {
   // write your code here
-  const [timer, setTimer] = React.useState(0);
+  const [timer, setTimer] = React.useState("");
   const handleEnter = (event) => {
     if (event.keyCode === 13) {
       clearInterval(setIntervalId);
