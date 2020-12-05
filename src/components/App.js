@@ -3,27 +3,27 @@ import "../styles/App.css";
 
 const App = () => {
   // write your code here
-  const [timer, setTimer] = React.useState("");
+  const EnterKeyCode = 13;
+  const [time, setTime] = React.useState("");
   const handleEnter = (event) => {
-    if (event.keyCode === 13) {
-      clearInterval(setIntervalId);
-      if (Number.isNaN(event.target.value)) {
-        setTimer(0);
+    if (event.keyCode === EnterKeyCode) {
+      clearInterval(timerID);
+      if (isNaN(event.target.value)) {
+        setTime(0);
         return;
       }
-      setTimer(parseInt(event.target.value, 10));
+      setTime(parseInt(event.target.value));
     }
     return;
   };
-  const countdown = () => {
-    clearInterval(setIntervalId);
-    if (timer <= 0) {
+  const tick = () => {
+    clearInterval(timerID);
+    if (time <= 0) {
       return;
     }
-    setTimer(timer - 1);
+    setTime(time - 1);
   };
-
-  let setIntervalId = setInterval(countdown, 1000);
+  let timerID = setInterval(tick, 1000);
   return (
     <div className="wrapper">
       <div id="whole-center">
@@ -32,7 +32,7 @@ const App = () => {
           <input id="timeCount" onKeyDown={handleEnter} /> sec.
         </h1>
       </div>
-      <div id="current-time">{timer}</div>
+      <div id="current-time">{time}</div>
     </div>
   );
 };
